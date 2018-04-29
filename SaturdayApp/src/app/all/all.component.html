@@ -1,22 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<h1>We're here, get ready to win.</h1>
+<h1>Commerce Manager</h1>
 
 <div style="text-align:center">
-  <h2>Welcome to Movie List! </h2>
-  <button [routerLink]="['/add']" >Add a new movie</button>
+  <h2>Welcome to Product List! </h2>
+  <button [routerLink]="['/add']" >Add a new Product</button>
   <table>
     <tr>
-      <th>Movie title</th>
-      <th>Actions available</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Action</th>
     </tr>
-    <tr *ngFor="let mov of movies">
-      <td>{{ mov.title }}</td>
+    <tr *ngFor="let product of products">
+      <td>{{ product.manage_id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.quantity }} </td>
+      <td>{{ product.price }}</td>
       <td> 
-        <button [routerLink]="['/review/', mov._id , mov.title]">Read reviews</button> 
-        <button [routerLink]="['/edit/', mov._id , mov.title]">Write a Review</button>
+        <button [routerLink]="['/edit/', product._id , product.name]">Edit</button> 
+        <button [routerLink]="['/details/', product._id , product.name]">Details</button>
       
-        <!-- <p *ngIf="(mov.createdAt )"> <button (click)="deleteByID(rest._id)">DELETE</button></p> -->
+        <!-- <p *ngIf="(mov.createdAt )"> <button (click)="deleteByID(mov._id)">DELETE</button></p> -->
       </td>
     </tr>
 

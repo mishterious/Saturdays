@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AllComponent } from './all/all.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditComponent } from './edit/edit.component';
     AppComponent,
     AllComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

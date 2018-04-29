@@ -2,28 +2,25 @@
 
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h2>Let's eat!!!!</h2>
+  <h2>Commerce Manager</h2>
   {{ error }}
   <p *ngIf="(error)">{{ error.message }}</p>
   <p *ngIf="(error)">{{ error.errmsg }}</p>
   
   <a [routerLink]="['/']" >Home</a>
 
-  <form (submit)="addReview()">
-    <p> {{ rest | json }} </p>
-    <h3> Your Name: <input type="text" name="rest.name" [(ngModel)]="rest.name" placeholder="You Name"></h3>
-    <h3>Stars</h3><select name="rest.stars" [(ngModel)]="rest.stars">
-      <option value="5">5 Star</option>
-      <option value="4">4 Star</option>
-      <option value="3">3 Star</option>
-      <option value="2">2 Star</option>
-      <option value="1">1 Star</option>
-    </select>
-    <h3> Your review: <input type="text" name="rest.review" [(ngModel)]="rest.review" placeholder="You're Reviews"></h3>
-    <button type="submit">Submit</button>
+  <form (submit)="edit()">
+      <p> {{ product | json }} </p>           
+      <p *ngIf="(product.name.length < 3)"> Hey there need to be more letters in your name</p>
+      <h3> Name: <input type="text" name="name" [(ngModel)]="product.name" placeholder="What is your name?"></h3>
+      <p *ngIf="(product.quantity == '')"> Hey there need to be more letters in your name</p>
+      <h3> Qty: <input type="text" name="qty" [(ngModel)]="product.quantity" placeholder="How many do we have?"></h3>
+      <p *ngIf="(product.price < 2)"> What is this worth to you?!?!</p>
+      <h3> Price <input type="text" name="price" [(ngModel)]="product.price" placeholder="How much does it cost?"></h3>
+
+      <button [routerLink]="['/']" >RESET</button>
+      
+      <p *ngIf="(product.name.length > 3 && product.quantity != '' && product.price.length > 0 )"><button type="submit">Update</button></p>
   </form>
-
-
-  <button [routerLink]="['/all']" >Cancel</button> 
 
 <router-outlet></router-outlet> 

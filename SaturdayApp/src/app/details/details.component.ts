@@ -3,18 +3,17 @@ import { HttpService } from '../http.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.css']
 })
-export class EditComponent implements OnInit {
+export class DetailsComponent implements OnInit {
   @Input() myID;
   _id: any;
-  product: any;
+  rest: any;
   name: any;
   error: any;
-  editor: any;
-
+  reviews: any;
 
   constructor(
     private _httpService: HttpService, 
@@ -23,7 +22,7 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.product = { name: " " };
+    this.rest = { name: " " };
     this._route.params.subscribe((params: Params) => this._id = params['id']);
     this.restByID(this._id);
   }
@@ -32,21 +31,16 @@ export class EditComponent implements OnInit {
     // console.log(_id);
     let tempObservable = this._httpService.by(_id);
     tempObservable.subscribe(data => {
-      this.product = data;
-      console.log(this.product);
+      this.rest = data;
+      console.log(this.rest);
     })
   }
 
-  edit() {
-
-    console.log(this.product);
-    // this.editor = { name: this.product.name, stars: this.mystar, review: this.rest.review };
-      console.log(this.product);
-
-    let tempObservable = this._httpService.edit(this.product._id, this.product)
+  deleteByID(_id){
+    let tempObservable = this._httpService.deleteByID(_id);
     tempObservable.subscribe(data => {
-      this.product = data;
-    });
-    this._router.navigate(['/all']);  
+      console.log(data+ "345678765432123456789765432");
+    })
+    this._router.navigate(['/all']);
   }
 }

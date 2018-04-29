@@ -1,0 +1,27 @@
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Commerce Manager</h2>
+<div style="text-align:center">
+    {{ error }}
+    {{ product }}
+    <a [routerLink]="['/all']" >Home</a>
+    <h4 style="color: red;">{{ error }}</h4>
+    <h2>Let's eat! :</h2>
+    <p>Reviews for {{ rest.name }}</p>
+    
+    <p> {{ rest | json }} </p>
+
+    <p>owjefiojfwei</p>
+    <h2>Name</h2>
+    <h3>{{ rest.name }}</h3>
+    <h2>Qty</h2>
+    <h3>{{ rest.quantity }}</h3>
+    <h2>Price</h2>
+    <h3>{{ rest.price }}</h3>
+    <button [routerLink]="['/']" >RESET</button>
+    <p *ngIf="(rest.quantity == 0)"><button (click)="deleteByID(rest._id)">DELETE</button></p>
+    
+  </div>
+  <router-outlet></router-outlet> 
+  

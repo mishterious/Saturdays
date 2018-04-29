@@ -8,7 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./all.component.css']
 })
 export class AllComponent implements OnInit {
-  movies : any;
+  products : any;
   mylist : any;
 
   constructor(
@@ -25,18 +25,7 @@ export class AllComponent implements OnInit {
     let observable = this._httpService.all()
     observable.subscribe(data => 
       {
-        // console.log(data);
-        // console.log(data.messages);
-        // for(let alldata in data){
-        //   var all = 0
-        //   var num = 0
-        //   for(let i = 0; i < alldata.messages.length; i++){
-        //     all += Number(alldata.messages[i].stars);
-        //   }
-        //   num = Math.trunc(all/alldata.messages.length);
-        //   this.list.push({name: datas.name, av: num, _id: datas._id})
-        // }
-        this.movies = data;
+        this.products = data;
       }
     )
   }
@@ -45,7 +34,7 @@ export class AllComponent implements OnInit {
     console.log(_id);
     let tempObservable = this._httpService.by(_id);
     tempObservable.subscribe(data => {
-      this.movies = data;
+      this.products = data;
       console.log(data);
     })
   }
