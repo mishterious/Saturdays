@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<h1>We're here, get ready to win.</h1>
+
+<div style="text-align:center">
+  <h2>Welcome to Movie List! </h2>
+  <button [routerLink]="['/add']" >Add a new movie</button>
+  <table>
+    <tr>
+      <th>Movie title</th>
+      <th>Actions available</th>
+    </tr>
+    <tr *ngFor="let mov of movies">
+      <td>{{ mov.title }}</td>
+      <td> 
+        <button [routerLink]="['/review/', mov._id , mov.title]">Read reviews</button> 
+        <button [routerLink]="['/edit/', mov._id , mov.title]">Write a Review</button>
+      
+        <!-- <p *ngIf="(mov.createdAt )"> <button (click)="deleteByID(rest._id)">DELETE</button></p> -->
+      </td>
+    </tr>
+
+  </table>
+
+
+
+<router-outlet></router-outlet> 

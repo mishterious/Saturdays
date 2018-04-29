@@ -1,0 +1,29 @@
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h2>Let's eat!!!!</h2>
+  {{ error }}
+  <p *ngIf="(error)">{{ error.message }}</p>
+  <p *ngIf="(error)">{{ error.errmsg }}</p>
+  
+  <a [routerLink]="['/']" >Home</a>
+
+  <form (submit)="addReview()">
+    <p> {{ rest | json }} </p>
+    <h3> Your Name: <input type="text" name="rest.name" [(ngModel)]="rest.name" placeholder="You Name"></h3>
+    <h3>Stars</h3><select name="rest.stars" [(ngModel)]="rest.stars">
+      <option value="5">5 Star</option>
+      <option value="4">4 Star</option>
+      <option value="3">3 Star</option>
+      <option value="2">2 Star</option>
+      <option value="1">1 Star</option>
+    </select>
+    <h3> Your review: <input type="text" name="rest.review" [(ngModel)]="rest.review" placeholder="You're Reviews"></h3>
+    <button type="submit">Submit</button>
+  </form>
+
+
+  <button [routerLink]="['/all']" >Cancel</button> 
+
+<router-outlet></router-outlet> 
