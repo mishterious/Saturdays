@@ -2,7 +2,6 @@
 
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h2>Squishy tomatoes</h2>
 
   <p *ngIf="(error)">{{ error._message }}</p>
   <p *ngIf="(error)">{{ error.errmsg }}</p>
@@ -11,12 +10,20 @@
 
   <h4>Submit a movie and yoru review!</h4>
   <form (submit)="onSubmit()">
-    <p> {{ product | json }} </p>
+
+    <p *ngIf="(product.name.length < 3)"> Hey there need to be more letters in your name</p>
     <h3> Name: <input type="text" name="name" [(ngModel)]="product.name" placeholder="What is your name?"></h3>
+
+    <p *ngIf="(!product.quantity)"> Hey there need to be more letters in your name</p>
     <h3> Qty: <input type="text" name="qty" [(ngModel)]="product.quantity" placeholder="How many do we have?"></h3>
+
+    <p *ngIf="(product.price < 2)"> What is this worth to you?!?!</p>
+    
     <h3> Price <input type="text" name="price" [(ngModel)]="product.price" placeholder="How much does it cost?"></h3>
-    <button [routerLink]="['/']" >RESET</button> 
-    <button type="submit">Create</button>
+
+    <button [routerLink]="['/']" >RESET</button>
+
+    <p *ngIf="(product.name.length > 3 && product.quantity != '' && product.price.length > 0 )"><button type="submit">Create</button></p>
   </form>
 
 <router-outlet></router-outlet> 

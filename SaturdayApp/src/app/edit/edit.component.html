@@ -9,8 +9,7 @@
   
   <a [routerLink]="['/']" >Home</a>
 
-  <form (submit)="edit()">
-      <p> {{ product | json }} </p>           
+  <form (submit)="edit()">        
       <p *ngIf="(product.name.length < 3)"> Hey there need to be more letters in your name</p>
       <h3> Name: <input type="text" name="name" [(ngModel)]="product.name" placeholder="What is your name?"></h3>
       <p *ngIf="(product.quantity == '')"> Hey there need to be more letters in your name</p>
